@@ -1,0 +1,18 @@
+<div class="calender-body">
+	<table>
+		<thead>
+			<tr>
+				<th *ngFor="let day of weekDays">
+					<span>{{day.name}}</span>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let week of allDates">
+				<td *ngFor="let data of week;">
+					<span>{{data.date}}</span>
+				</td>
+			</tr>	
+		</tbody>
+	</table>
+</div>

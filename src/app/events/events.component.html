@@ -1,0 +1,25 @@
+<div>
+	<div class="events-header">
+		<h3>Upcoming Events</h3>
+	</div>
+	<div class="events-content">
+		<div class="events-list">
+			<div class="event" *ngFor="let event of events">
+				<div class="event-time">{{event.time || '--'}}</div>
+				<div class="event-body">
+					<div class="event-title">{{event.title}}</div>
+					<div class="event-description">{{event.description}}</div>
+				</div>
+			</div>
+			<div *ngIf="!events.length">
+				<div>
+					No Events here!
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="event-footer">
+		<button>Add Event</button>
+	</div>
+
+</div>
