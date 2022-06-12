@@ -47,7 +47,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		let dateChange: any = false;
 		switch (type) {
 			case 'month':
-				if ((this.selectedDate.getMonth() !== this.minYear.getMonth()) && (this.selectedDate.getFullYear() !== this.minYear.getFullYear())) {
+				if (this.selectedDate.getMonth() == this.minYear.getMonth()) {
+					if (this.selectedDate.getFullYear() == this.minYear.getFullYear()){
+					}else{
+						this.selectedDate.setMonth(this.selectedDate.getMonth() - 1);
+						dateChange = true;
+					}
+				}else{
 					this.selectedDate.setMonth(this.selectedDate.getMonth() - 1);
 					dateChange = true;
 				}
@@ -74,7 +80,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		let dateChange: any = false;
 		switch (type) {
 			case 'month':
-				if ((this.selectedDate.getMonth() !== this.maxYear.getMonth()) && (this.selectedDate.getFullYear() !== this.maxYear.getFullYear())) {
+				if (this.selectedDate.getMonth() == this.maxYear.getMonth()) {
+					if (this.selectedDate.getFullYear() == this.maxYear.getFullYear()) {
+					} else {
+						this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+						dateChange = true;
+					}
+				} else {
 					this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
 					dateChange = true;
 				}
