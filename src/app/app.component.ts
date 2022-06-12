@@ -7,7 +7,7 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-	title: any = 'My web calender';
+	title: any = 'web-calendar';
 	selectedDate: any = new Date();
 	subs: any;
 

@@ -15,12 +15,8 @@ export class AppService {
 		return this.data;
 	}
 
-	setData(data: any): any {
+	setData(data: any): boolean {
 		this.dataChange.next(data);
-	}
-
-	getValidDate(date: any): any {
-		let d = new Date(date);
-		return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+		return true;
 	}
 }

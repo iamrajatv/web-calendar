@@ -84,19 +84,13 @@ export class EventsComponent implements OnInit {
 	}
 
 	deleteEvent(event: any, index: number): any {
-		if (event) {
-			const eventIndex: any = this.selectedDateEvents.findIndex((e, i) => {
-				return e.id === event.id;
-			});
+		if (event && event.id) {
+			this.selectedDateEvents.splice(index, 1);
+			console.info('Event deleted!');
 
-			if (eventIndex !== undefined) {
-				this.selectedDateEvents.splice(eventIndex, 1);
-				console.info('Event deleted!');
-
-				this.allEvents.set(this.getUniqueId(this.selectedDate), this.selectedDateEvents);
-				this.inputEvent = {};
-				this.printEvents();
-			}
+			this.allEvents.set(this.getUniqueId(this.selectedDate), this.selectedDateEvents);
+			this.inputEvent = {};
+			this.printEvents();
 		}
 	}
 
