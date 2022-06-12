@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AppConfig } from 'src/app/app.config';
 import { AppService } from 'src/app/app.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-footer',
@@ -24,10 +24,10 @@ export class FooterComponent implements OnInit, OnDestroy {
 		this.selectedDate = new Date();
 		this.selectedYear = this.selectedDate.getFullYear();
 		this.selectedMonth = this.selectedDate.getMonth();
-		console.log('selectedYear', this.selectedYear);
-		console.log('selectedMonth', this.selectedMonth);
-		let firstYear = this.selectedDate.getFullYear() - AppConfig.maxData;
-		let lastYear = this.selectedDate.getFullYear() + AppConfig.maxData;
+		console.info('selectedYear', this.selectedYear);
+		console.info('selectedMonth', this.selectedMonth);
+		let firstYear = this.selectedDate.getFullYear() - environment.maxData;
+		let lastYear = this.selectedDate.getFullYear() + environment.maxData;
 		for (let i = firstYear; i <= lastYear; i++) {
 			this.years.push({
 				name: i,
@@ -37,57 +37,69 @@ export class FooterComponent implements OnInit, OnDestroy {
 
 		this.months = [
 			{
-				name: 'Jan',
+				name: 'January',
+				shortName: 'Jan',
 				value: 0
 			},
 			{
-				name: 'Feb',
+				name: 'February',
+				shortName: 'Feb',
 				value: 1
 			},
 			{
-				name: 'Mar',
+				name: 'March',
+				shortName: 'Mar',
 				value: 2
 			},
 			{
-				name: 'Apr',
+				name: 'April',
+				shortName: 'Apr',
 				value: 3
 			},
 			{
 				name: 'May',
+				shortName: 'May',
 				value: 4
 			},
 			{
-				name: 'Jun',
+				name: 'June',
+				shortName: 'Jun',
 				value: 5
 			},
 			{
-				name: 'Jul',
+				name: 'July',
+				shortName: 'Jul',
 				value: 6
 			},
 			{
-				name: 'Aug',
+				name: 'August',
+				shortName: 'Aug',
 				value: 7
 			},
 			{
-				name: 'Sep',
+				name: 'September',
+				shortName: 'Sep',
 				value: 8
 			},
 			{
-				name: 'Oct',
+				name: 'October',
+				shortName: 'Oct',
 				value: 9
 			},
 			{
-				name: 'Nov',
+				name: 'November',
+				shortName: 'Nov',
 				value: 10
 			},
 			{
-				name: 'Dec',
+				name: 'December',
+				shortName: 'Dec',
 				value: 11
 			},
 		];
 
 		this.subs = this.appService.getData().subscribe((data: any) => {
-			console.log('footer: date change detected', data);
+			console.info('footer: date change detected', data);
 			if (data.date) {
 				this.selectedDate = new Date(data.date);
 				this.selectedYear = this.selectedDate.getFullYear();
@@ -103,7 +115,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 	}
 
 	selectToday(): any{
-		console.log('selectToday', this.selectedDate);
+		console.info('selectToday', this.selectedDate);
 		this.selectedDate = new Date();
 		this.appService.setData({
 			date: this.selectedDate
@@ -111,7 +123,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 	}
 
 	selectYear(): any {
-		console.log('selected year', this.selectedYear);
+		console.info('selected year', this.selectedYear);
 		this.selectedDate.setFullYear(this.selectedYear);
 		this.appService.setData({
 			date: this.selectedDate
@@ -119,7 +131,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 	}
 
 	selectMonth(): any {
-		console.log('selected month', this.selectedMonth);
+		console.info('selected month', this.selectedMonth);
 		this.selectedDate.setMonth(this.selectedMonth);
 		this.appService.setData({
 			date: this.selectedDate

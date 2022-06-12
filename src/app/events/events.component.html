@@ -1,17 +1,28 @@
 <div>
 	<div class="events-header">
-		<h3>Upcoming Events</h3>
+		<h3>Events List</h3>
 	</div>
 	<div class="events-content">
 		<div class="events-list">
-			<div class="event" *ngFor="let event of allEvents">
-				<div class="event-time">{{event.time || '--'}}</div>
-				<div class="event-body">
-					<div class="event-title">{{event.title}}</div>
-					<div class="event-description">{{event.description}}</div>
+			<div class="event" *ngFor="let event of selectedDateEvents;let i = index;">
+				<div class="event-body" *ngIf="!event.edit">
+					<!-- <div class="event-time">{{event.time || '--'}}</div> -->
+					<div class="event-title"><span>{{i+1}}. </span> <span>{{event.title}}</span></div>
+					<div class="event-actions">
+						<button class="edit-action" (click)="editEvent(event,i)">&#9998;</button>
+						<button class="delete-action" (click)="deleteEvent(event,i)">&#10006;</button></div>
+				</div>
+				<div class="event-body" *ngIf="event.edit">
+					<!-- <div class="event-time">{{event.time || '--'}}</div> -->
+					<div class="event-input">
+						<input type="text" [(ngModel)]="event.title" (keyup.enter)="updateEvent(event,i)">
+					</div>
+					<div class="event-actions">
+						<button class="edit-action" (click)="updateEvent(event,i)">&#10003;</button>
+						<button class="delete-action" (click)="cancelEdit(event,i)">x</button></div>
 				</div>
 			</div>
-			<div *ngIf="!allEvents.length">
+			<div *ngIf="!selectedDateEvents.length">
 				<div>
 					No Events here!
 				</div>
@@ -19,7 +30,9 @@
 		</div>
 	</div>
 	<div class="event-footer">
-		<button>Add Event</button>
+		<input type="text" name="title" [(ngModel)]="inputEvent.title" (keyup.enter)="addEvent(inputEvent)">
+		<!-- <input type="text" name="description" [(ngModel)]="event.description"> -->
+		<button (click)="addEvent(inputEvent)">Add Event</button>
 	</div>
 
 </div>

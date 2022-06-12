@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AppConfig } from 'src/app/app.config';
 import { AppService } from 'src/app/app.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-header',
@@ -21,17 +21,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 		// set min max year
 		let temp = new Date();
-		temp.setFullYear(temp.getFullYear() - AppConfig.maxData);
+		temp.setFullYear(temp.getFullYear() - environment.maxData);
 		this.minYear = new Date(temp);
 		temp = new Date();
-		temp.setFullYear(temp.getFullYear() + AppConfig.maxData);
+		temp.setFullYear(temp.getFullYear() + environment.maxData);
 		this.maxYear = new Date(temp);
 
 		this.subs = this.appService.getData().subscribe((data: any) => {
-			console.log('header: date change detected', data);
+			console.info('header: date change detected', data);
 			if (data.date) {
 				this.selectedDate = new Date(data.date);
-				// console.log('selectedDate', this.selectedDate);
+				// console.info('selectedDate', this.selectedDate);
 			} else {
 				console.error('Invalid date passed!');
 			}
@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	}
 
 	prev(type: any): any {
-		// console.log('prev ', type, ':', this.selectedDate.getDate(), ' ', this.selectedDate.getMonth(), ' ', this.selectedDate.getFullYear());
+		// console.info('prev ', type, ':', this.selectedDate.getDate(), ' ', this.selectedDate.getMonth(), ' ', this.selectedDate.getFullYear());
 		let dateChange: any = false;
 		switch (type) {
 			case 'date':
@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	}
 
 	next(type: any): any {
-		// console.log('next ', type, ':', this.selectedDate.getDate(), ' ', this.selectedDate.getMonth(), ' ', this.selectedDate.getFullYear());
+		// console.info('next ', type, ':', this.selectedDate.getDate(), ' ', this.selectedDate.getMonth(), ' ', this.selectedDate.getFullYear());
 		let dateChange: any = false;
 		switch (type) {
 			case 'date':

@@ -51,7 +51,7 @@ export class BodyComponent implements OnInit, OnDestroy {
 		this.setDates(new Date());
 
 		this.subs = this.appService.getData().subscribe((data: any) => {
-			console.log('body: date change detected', data);
+			console.info('body: date change detected', data);
 			if (data.date) {
 				this.selectedDate = new Date(data.date);
 				this.setDates(this.selectedDate);
@@ -73,8 +73,8 @@ export class BodyComponent implements OnInit, OnDestroy {
 		// // mm-yy-dddd
 		// const firstDayOfYear = new Date('01-01-' + selectedDate.getFullYear());
 		// const firstDayOfNextYear = new Date('01-01-' + (selectedDate.getFullYear() + 1));
-		// console.log('firstDayOfYear', firstDayOfYear);
-		// console.log('firstDayOfNextYear', firstDayOfNextYear);
+		// console.info('firstDayOfYear', firstDayOfYear);
+		// console.info('firstDayOfNextYear', firstDayOfNextYear);
 		// while (firstDayOfYear.getFullYear() < firstDayOfNextYear.getFullYear()) {
 
 		// 	const date = {
@@ -84,7 +84,7 @@ export class BodyComponent implements OnInit, OnDestroy {
 		// 		year: firstDayOfYear.getFullYear(), // 2022,2023...
 		// 	};
 		// 	calendar.push(date);
-		// 	// console.log('date added', calendar);
+		// 	// console.info('date added', calendar);
 		// 	firstDayOfYear.setDate(firstDayOfYear.getDate() + 1);
 		// }
 
@@ -118,7 +118,7 @@ export class BodyComponent implements OnInit, OnDestroy {
 			calendar.push(dateData);
 			temp.setDate(temp.getDate() + 1);
 		}
-		console.log('calendar set', calendar);
+		console.info('calendar set', calendar);
 
 		// split by week
 		let weekDates: any = [];
@@ -130,7 +130,7 @@ export class BodyComponent implements OnInit, OnDestroy {
 				weekDates[(e.week - 1)].push(e);
 			}
 		});
-		console.log('weekDates', weekDates);
+		console.info('weekDates', weekDates);
 
 
 		weekDates.forEach((w: any[], i: number) => {
@@ -160,13 +160,13 @@ export class BodyComponent implements OnInit, OnDestroy {
 		});
 
 		this.allDates = weekDates;
-		console.log('allDates', this.allDates);
+		console.info('allDates', this.allDates);
 
 		// this.setEvents();
 	}
 
 	selectDate(data: any): any{
-		console.log('selectDate called', data);
+		console.info('selectDate called', data);
 		if (!data.invalid){
 			this.selectedDate = new Date(data.actualDate);
 			// this.setDates(this.selectedDate);
