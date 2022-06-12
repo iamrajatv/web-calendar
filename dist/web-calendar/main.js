@@ -175,17 +175,12 @@ class EventsComponent {
         }
     }
     deleteEvent(event, index) {
-        if (event) {
-            const eventIndex = this.selectedDateEvents.findIndex((e, i) => {
-                return e.id === event.id;
-            });
-            if (eventIndex !== undefined) {
-                this.selectedDateEvents.splice(eventIndex, 1);
-                console.info('Event deleted!');
-                this.allEvents.set(this.getUniqueId(this.selectedDate), this.selectedDateEvents);
-                this.inputEvent = {};
-                this.printEvents();
-            }
+        if (event && event.id) {
+            this.selectedDateEvents.splice(index, 1);
+            console.info('Event deleted!');
+            this.allEvents.set(this.getUniqueId(this.selectedDate), this.selectedDateEvents);
+            this.inputEvent = {};
+            this.printEvents();
         }
     }
     printEvents() {
@@ -302,10 +297,7 @@ class AppService {
     }
     setData(data) {
         this.dataChange.next(data);
-    }
-    getValidDate(date) {
-        let d = new Date(date);
-        return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+        return true;
     }
 }
 AppService.ɵfac = function AppService_Factory(t) { return new (t || AppService)(); };
@@ -656,10 +648,6 @@ class HeaderComponent {
         // console.info('prev ', type, ':', this.selectedDate.getDate(), ' ', this.selectedDate.getMonth(), ' ', this.selectedDate.getFullYear());
         let dateChange = false;
         switch (type) {
-            case 'date':
-                this.selectedDate.setDate(this.selectedDate.getDate() - 1);
-                dateChange = true;
-                break;
             case 'month':
                 if ((this.selectedDate.getMonth() !== this.minYear.getMonth()) && (this.selectedDate.getFullYear() !== this.minYear.getFullYear())) {
                     this.selectedDate.setMonth(this.selectedDate.getMonth() - 1);
@@ -685,10 +673,6 @@ class HeaderComponent {
         // console.info('next ', type, ':', this.selectedDate.getDate(), ' ', this.selectedDate.getMonth(), ' ', this.selectedDate.getFullYear());
         let dateChange = false;
         switch (type) {
-            case 'date':
-                this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-                dateChange = true;
-                break;
             case 'month':
                 if ((this.selectedDate.getMonth() !== this.maxYear.getMonth()) && (this.selectedDate.getFullYear() !== this.maxYear.getFullYear())) {
                     this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
@@ -988,7 +972,7 @@ __webpack_require__.r(__webpack_exports__);
 class AppComponent {
     constructor(appService) {
         this.appService = appService;
-        this.title = 'My web calender';
+        this.title = 'web-calendar';
         this.selectedDate = new Date();
     }
     ngOnInit() {
@@ -1005,11 +989,11 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_app_service__WEBPACK_IMPORTED_MODULE_1__["AppService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 5, vars: 0, consts: [[1, "app-container"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h1");
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 5, vars: 0, consts: [[1, "app-title"], [1, "app-container"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h1", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Web Calendar");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "app-calender");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-events");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
