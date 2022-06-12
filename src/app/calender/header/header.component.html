@@ -1,11 +1,17 @@
 <div class="calender-header">
 	<div>
-		<button>Prev</button>
+		<button title="Prev Month" (click)="prev('year')">&#171;</button>
+	</div>
+	<div>
+		<button title="Prev Date" (click)="prev('month')">&#8249;</button>
 	</div>
 	<div>
 		<span>{{selectedDate | date:'dd MMM, YYYY'}}</span>
 	</div>
 	<div>
-		<button>Next</button>
+		<button title="Next Date" (click)="next('month')">&#8250;</button>
+	</div>
+	<div>
+		<button title="Next Month" (click)="next('year')">&#187;</button>
 	</div>
 </div>

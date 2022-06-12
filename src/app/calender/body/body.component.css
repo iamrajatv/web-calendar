@@ -1,3 +1,32 @@
-.calender-body table{
-  width: 100%;
+.calender-body table {
+	width: 100%;
+}
+
+td.week-col.dates.current-date {
+	background: #a8d3f3;
+	color: white;
+	border-radius: 10px;
+}
+td.week-col.dates.selected {
+	background: #5aaae7;
+	color: white;
+	border-radius: 10px;
+}
+
+td.week-col.dates {
+	text-align: center;
+	padding: 6px;
+	transition: all ease-in-out 0.3s;
+}
+
+.dates.valid {
+	cursor: pointer;
+}
+
+.dates.valid:hover {
+	background-color: #cecece;
+}
+
+.dates.invalid {
+	cursor: default
 }

@@ -2,14 +2,14 @@
 	<table>
 		<thead>
 			<tr>
-				<th *ngFor="let day of weekDays">
+				<th *ngFor="let day of weekDays" class="week-days">
 					<span>{{day.name}}</span>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let week of allDates">
-				<td *ngFor="let data of week;">
+			<tr *ngFor="let week of allDates" class="week-row">
+				<td *ngFor="let data of week;" [class.current-date]="data.currentDate" [class.invalid]="data.invalid" [class.valid]="!data.invalid" [class.selected]="data.selected" class="week-col dates" (click)="selectDate(data)">
 					<span>{{data.date}}</span>
 				</td>
 			</tr>	

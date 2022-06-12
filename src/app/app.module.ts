@@ -7,6 +7,7 @@ import { EventsComponent } from './events/events.component';
 import { HeaderComponent } from './calender/header/header.component';
 import { BodyComponent } from './calender/body/body.component';
 import { FooterComponent } from './calender/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { FooterComponent } from './calender/footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+		FormsModule,
+		ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,14 +4,14 @@
 	</div>
 	<div class="events-content">
 		<div class="events-list">
-			<div class="event" *ngFor="let event of events">
+			<div class="event" *ngFor="let event of allEvents">
 				<div class="event-time">{{event.time || '--'}}</div>
 				<div class="event-body">
 					<div class="event-title">{{event.title}}</div>
 					<div class="event-description">{{event.description}}</div>
 				</div>
 			</div>
-			<div *ngIf="!events.length">
+			<div *ngIf="!allEvents.length">
 				<div>
 					No Events here!
 				</div>

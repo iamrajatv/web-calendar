@@ -1,15 +1,15 @@
 <div class="calender-foooter">
 	<div>
-		<select name="year-list">
-			<option *ngFor="let year of years" [value]="year.name">{{year.name}}</option>
+		<select name="year-list" (change)="selectYear()" [(ngModel)]="selectedYear">
+			<option *ngFor="let year of years" [value]="year.value">{{year.name}}</option>
 		</select>
 	</div>
 	<div>
-		<select name="month-list">
-			<option *ngFor="let month of months" [value]="month.name">{{month.name}}</option>
+		<select name="month-list" (change)="selectMonth()" [(ngModel)]="selectedMonth">
+			<option *ngFor="let month of months" [value]="month.value">{{month.name}}</option>
 		</select>
 	</div>
 	<div>
-		<button>Today</button>
+		<button (click)="selectToday()">Today</button>
 	</div>
 </div>

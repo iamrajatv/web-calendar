@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-	private events: any[] = [];
+	allEvents: any[] = [];
 	constructor() { }
 
 	ngOnInit(): void {
-		this.events = [
+		this.allEvents = [
 			{
 				time: '10:30AM',
 				title: 'Event 1',
@@ -35,12 +35,12 @@ export class EventsComponent implements OnInit {
 	}
 
 	getEvents(): any {
-		return this.events;
+		return this.allEvents;
 	}
 
 	setEvents(events: any[]): any {
 		if (Array.isArray(events)) {
-			this.events = events;
+			this.allEvents = events;
 			console.log('All events set!');
 		}
 	}
@@ -48,7 +48,7 @@ export class EventsComponent implements OnInit {
 	addEvent(event: any): any {
 		if (event) {
 			event.id = this.getUniqueId();
-			this.events.push(event);
+			this.allEvents.push(event);
 			console.log('Event added!');
 			this.printTotalEvents();
 		}
@@ -56,7 +56,7 @@ export class EventsComponent implements OnInit {
 
 	updateEvent(event: any): any {
 		if (event) {
-			let eventExist = this.events.filter((e, i) => {
+			let eventExist = this.allEvents.filter((e, i) => {
 				return e.id === event.id;
 			})[0];
 
@@ -69,12 +69,12 @@ export class EventsComponent implements OnInit {
 
 	deleteEvent(event: any): any {
 		if (event) {
-			const eventIndex: any = this.events.findIndex((e, i) => {
+			const eventIndex: any = this.allEvents.findIndex((e, i) => {
 				return e.id === event.id;
 			});
 
 			if (eventIndex !== undefined) {
-				this.events.splice(eventIndex, 1);
+				this.allEvents.splice(eventIndex, 1);
 				console.log('Event deleted!');
 				this.printTotalEvents();
 			}
@@ -82,7 +82,7 @@ export class EventsComponent implements OnInit {
 	}
 
 	printTotalEvents(): any{
-		console.log('Total Events', this.events.length);
+		console.log('Total Events', this.allEvents.length);
 	}
 
 }
