@@ -104,8 +104,6 @@ export class FooterComponent implements OnInit, OnDestroy {
 				this.selectedDate = new Date(data.date);
 				this.selectedYear = this.selectedDate.getFullYear();
 				this.selectedMonth = this.selectedDate.getMonth();
-			} else {
-				console.error('Invalid date passed!');
 			}
 		});
 	}

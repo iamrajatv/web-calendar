@@ -15,8 +15,9 @@ td.week-col.dates.selected {
 
 td.week-col.dates {
 	text-align: center;
-	padding: 6px;
+	padding: 6px 8px;
 	transition: all ease-in-out 0.3s;
+	position: relative;
 }
 
 .dates.valid {
@@ -29,4 +30,12 @@ td.week-col.dates {
 
 .dates.invalid {
 	cursor: default
+}
+
+span.event-highlightier{
+	color: red;
+    position: absolute;
+    top: 0px;
+    right: 3px;
+    font-size: 80%;
 }

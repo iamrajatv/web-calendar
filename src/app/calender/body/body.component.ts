@@ -55,8 +55,9 @@ export class BodyComponent implements OnInit, OnDestroy {
 			if (data.date) {
 				this.selectedDate = new Date(data.date);
 				this.setDates(this.selectedDate);
-			} else {
-				console.error('Invalid date passed!');
+			}
+			if(data.eventUpdate) {
+				this.setDates(this.selectedDate);
 			}
 		});
 	}
@@ -101,7 +102,8 @@ export class BodyComponent implements OnInit, OnDestroy {
 		// while (temp < temp2) {
 
 		while ((temp.getFullYear() == temp2.getFullYear()) ? temp.getMonth() < temp2.getMonth() : (temp.getFullYear() < temp2.getFullYear()) ? temp < temp2 : false) {
-			const dateData = {
+			const dateData: any = {
+				id: this.appService.getUniqueId(temp),
 				day: temp.getDay(), // 0-6 = sun-sat
 				date: temp.getDate(), // 1-31
 				month: temp.getMonth(), // 0-11 = jan-dec
@@ -111,6 +113,8 @@ export class BodyComponent implements OnInit, OnDestroy {
 				currentDate: (temp.getDate() == this.currentDate.getDate() && temp.getMonth() == this.currentDate.getMonth() && temp.getFullYear() == this.currentDate.getFullYear()),
 				selected: (temp.getDate() == selectedDate.getDate() && temp.getMonth() == selectedDate.getMonth() && temp.getFullYear() == selectedDate.getFullYear())
 			};
+			dateData.events = this.appService.getEvents(dateData.id);
+			dateData.hasEvents = dateData.events && dateData.events.length ?  true : false;
 			if (dateData.day == 6) {
 				week++;
 			}

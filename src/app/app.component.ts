@@ -18,8 +18,6 @@ export class AppComponent implements OnInit{
 			if (data.date) {
 				this.selectedDate = new Date(data.date);
 				// console.info('selectedDate', this.selectedDate);
-			} else {
-				console.error('Invalid date passed!');
 			}
 		});
 	}

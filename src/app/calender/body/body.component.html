@@ -9,7 +9,8 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let week of allDates" class="week-row">
-				<td *ngFor="let data of week;" [class.current-date]="data.currentDate" [class.invalid]="data.invalid" [class.valid]="!data.invalid" [class.selected]="data.selected" class="week-col dates" (click)="selectDate(data)">
+				<td *ngFor="let data of week;" [class.current-date]="data.currentDate" [class.invalid]="data.invalid" [class.valid]="!data.invalid" [class.selected]="data.selected" [class.has-events]="data.hasEvents" class="week-col dates" (click)="selectDate(data)">
+					<span *ngIf="data.hasEvents" class="event-highlightier">*</span>
 					<span>{{data.date}}</span>
 				</td>
 			</tr>	

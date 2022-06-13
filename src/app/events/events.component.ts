@@ -23,8 +23,6 @@ export class EventsComponent implements OnInit {
 				this.selectedDate = new Date(data.date);
 				this.setDateEvents(this.selectedDate);
 				// console.info('selectedDate', this.selectedDate);
-			} else {
-				console.error('Invalid date passed!');
 			}
 		});
 	}
@@ -57,6 +55,7 @@ export class EventsComponent implements OnInit {
 			console.info('Event added!');
 
 			this.allEvents.set(this.getUniqueId(this.selectedDate), this.selectedDateEvents);
+			this.appService.setEvents(this.allEvents);
 			this.inputEvent = {};
 			this.printEvents();
 		}
@@ -78,6 +77,7 @@ export class EventsComponent implements OnInit {
 			event.edit = false;
 			console.info('Event updated!');
 			this.allEvents.set(this.getUniqueId(this.selectedDate), this.selectedDateEvents);
+			this.appService.setEvents(this.allEvents);
 			this.inputEvent = {};
 			this.printEvents();
 		}
@@ -89,6 +89,7 @@ export class EventsComponent implements OnInit {
 			console.info('Event deleted!');
 
 			this.allEvents.set(this.getUniqueId(this.selectedDate), this.selectedDateEvents);
+			this.appService.setEvents(this.allEvents);
 			this.inputEvent = {};
 			this.printEvents();
 		}
