@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jarvis/Desktop/Workspace/test/upwork/web-calendar/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! D:\Workspace\Test\web-calendar\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

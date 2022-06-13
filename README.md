@@ -5,6 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Demo Link
    https://iamrajatv.github.io/web-calendar/
 
+## Push dist branch to github pages
+   git subtree push --prefix dist origin gh-pages
+   
+   Source : https://gist.github.com/joshuapekera/ef364073b01fb0e21d3f
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
